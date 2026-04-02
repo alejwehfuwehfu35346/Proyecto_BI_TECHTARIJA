@@ -43,22 +43,14 @@ def limpiar_productos(df):
     """Limpieza de tabla productos"""
     print("\n--- Limpiando tabla PRODUCTOS ---")
     
-    # Verificar nulos
     print(f"  Nulos antes: {df.isnull().sum().sum()}")
-    
-    # Eliminar duplicados
     df = df.drop_duplicates()
-    
-    # Estandarizar nombres de categoría (mayúsculas)
     df['categoria'] = df['categoria'].str.upper()
-    
-    # Crear columna de margen
     df['margen_bs'] = df['precio_venta_bs'] - df['precio_costo_bs']
     df['margen_porcentaje'] = (df['margen_bs'] / df['precio_venta_bs']) * 100
     
     print(f"  Nulos después: {df.isnull().sum().sum()}")
     print(f"  Registros finales: {len(df)}")
-    
     return df
 
 
@@ -66,17 +58,11 @@ def limpiar_clientes(df):
     """Limpieza de tabla clientes"""
     print("\n--- Limpiando tabla CLIENTES ---")
     
-    # Verificar nulos
     print(f"  Nulos antes: {df.isnull().sum().sum()}")
-    
-    # Eliminar duplicados
     df = df.drop_duplicates()
-    
-    # Estandarizar zonas y tipos
     df['zona'] = df['zona'].str.upper().str.strip()
     df['tipo_cliente'] = df['tipo_cliente'].str.upper().str.strip()
     
-    # Normalizar nombres de zonas según estándar
     zona_mapping = {
         'CENTRO': 'Centro',
         'LOS OLIVOS': 'Los Olivos', 
@@ -88,7 +74,6 @@ def limpiar_clientes(df):
     
     print(f"  Nulos después: {df.isnull().sum().sum()}")
     print(f"  Registros finales: {len(df)}")
-    
     return df
 
 
@@ -96,19 +81,13 @@ def limpiar_tecnicos(df):
     """Limpieza de tabla técnicos"""
     print("\n--- Limpiando tabla TECNICOS ---")
     
-    # Verificar nulos
     print(f"  Nulos antes: {df.isnull().sum().sum()}")
-    
-    # Eliminar duplicados
     df = df.drop_duplicates()
-    
-    # Estandarizar nombres
     df['nombre'] = df['nombre'].str.upper().str.strip()
     df['zona_asignada'] = df['zona_asignada'].str.upper().str.strip()
     
     print(f"  Nulos después: {df.isnull().sum().sum()}")
     print(f"  Registros finales: {len(df)}")
-    
     return df
 
 
@@ -116,22 +95,14 @@ def limpiar_ventas(df):
     """Limpieza de tabla ventas"""
     print("\n--- Limpiando tabla VENTAS ---")
     
-    # Verificar nulos
     print(f"  Nulos antes: {df.isnull().sum().sum()}")
-    
-    # Eliminar duplicados
     df = df.drop_duplicates()
-    
-    # Convertir fecha a datetime
     df['fecha'] = pd.to_datetime(df['fecha'])
-    
-    # Crear columna de mes y año
     df['mes'] = df['fecha'].dt.month
     df['anio'] = df['fecha'].dt.year
     
     print(f"  Nulos después: {df.isnull().sum().sum()}")
     print(f"  Registros finales: {len(df)}")
-    
     return df
 
 
@@ -139,19 +110,10 @@ def limpiar_servicios(df):
     """Limpieza de tabla servicios"""
     print("\n--- Limpiando tabla SERVICIOS ---")
     
-    # Verificar nulos
     print(f"  Nulos antes: {df.isnull().sum().sum()}")
-    
-    # Eliminar duplicados
     df = df.drop_duplicates()
-    
-    # Convertir fecha a datetime
     df['fecha'] = pd.to_datetime(df['fecha'])
-    
-    # Estandarizar tipo de servicio
     df['tipo_servicio'] = df['tipo_servicio'].str.upper().str.strip()
-    
-    # Estandarizar zona
     df['zona'] = df['zona'].str.upper().str.strip()
     
     zona_mapping = {
@@ -162,17 +124,11 @@ def limpiar_servicios(df):
         'PAMPA GALANA': 'Pampa Galana'
     }
     df['zona'] = df['zona'].map(zona_mapping).fillna(df['zona'])
-    
-    # Crear columna de mes y año
     df['mes'] = df['fecha'].dt.month
     df['anio'] = df['fecha'].dt.year
     
-    # Calcular costo de mano de obra
-    # Primero necesitamos la tarifa de cada técnico (se unirá después)
-    
     print(f"  Nulos después: {df.isnull().sum().sum()}")
     print(f"  Registros finales: {len(df)}")
-    
     return df
 
 
@@ -180,18 +136,12 @@ def limpiar_cepalstat(df):
     """Limpieza de tabla CEPALSTAT"""
     print("\n--- Limpiando tabla CEPALSTAT ---")
     
-    # Verificar nulos
     print(f"  Nulos antes: {df.isnull().sum().sum()}")
-    
-    # Eliminar duplicados
     df = df.drop_duplicates()
-    
-    # Estandarizar nombres de países
     df['pais'] = df['pais'].str.upper().str.strip()
     
     print(f"  Nulos después: {df.isnull().sum().sum()}")
     print(f"  Registros finales: {len(df)}")
-    
     return df
 
 
@@ -216,6 +166,25 @@ def integrar_datos(ventas, servicios, tecnicos):
     
     # Calcular costo total del servicio
     servicios_con_tecnico['costo_total_bs'] = servicios_con_tecnico['costo_combustible_bs'] + servicios_con_tecnico['costo_mano_obra_bs']
+    
+    # ASIGNAR VALOR DE INGRESO POR SERVICIO (simulado basado en horas y tipo)
+    # Precios base por tipo de servicio
+    precios_servicio = {
+        'INSTALACION GPS': 450,
+        'MANTENIMIENTO CAMARAS': 350,
+        'INSTALACION RED': 400,
+        'CALIBRACION GPS': 250,
+        'INSTALACION CAMARAS': 500,
+        'MANTENIMIENTO RED': 300,
+        'REPARACION CAMARA': 380,
+        'MANTENIMIENTO GPS': 320,
+        'REPARACION RED': 350
+    }
+    
+    servicios_con_tecnico['valor_venta_bs'] = servicios_con_tecnico['tipo_servicio'].map(precios_servicio)
+    
+    # Si algún tipo no tiene precio, asignar 350 por defecto
+    servicios_con_tecnico['valor_venta_bs'] = servicios_con_tecnico['valor_venta_bs'].fillna(350)
     
     print(f"  Datos integrados: {len(servicios_con_tecnico)} registros")
     
@@ -267,8 +236,6 @@ def main():
     print("\n" + "=" * 60)
     print("LIMPIEZA COMPLETADA EXITOSAMENTE")
     print("=" * 60)
-    
-    return productos_clean, clientes_clean, tecnicos_clean, ventas_clean, servicios_clean, servicios_integrados, cepalstat_clean
 
 
 if __name__ == "__main__":
