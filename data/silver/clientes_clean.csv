@@ -1,0 +1,21 @@
+id_cliente,nombre,tipo_cliente,zona,antiguedad_meses
+1,Transporte San Jorge,CORPORATIVO,San Jorge,48
+2,Empresa de Seguridad Atlas,CORPORATIVO,Centro,36
+3,Comercial Los Olivos,COMERCIO,Los Olivos,24
+4,Hotel Central Tarija,COMERCIO,Centro,18
+5,Colegio San Luis,INSTITUCION,San Jorge,60
+6,Farmacia Santa Ana,COMERCIO,Centro,12
+7,Restaurante El Mirador,COMERCIO,Los Olivos,8
+8,Taller Mecánico Rápido,TALLER,SAN ANDRÉS,4
+9,Librería Cultural,COMERCIO,Centro,20
+10,Consultorio Médico Salud Total,PROFESIONAL,Los Olivos,15
+11,Almacén Don José,COMERCIO,Pampa Galana,6
+12,Panadería La Paz,COMERCIO,Centro,3
+13,Gimnasio Fit Center,GIMNASIO,San Jorge,10
+14,Feretería El Constructor,COMERCIO,SAN ANDRÉS,2
+15,Lavadero Express,LAVADERO,Centro,5
+16,Café Boulevard,COMERCIO,Los Olivos,7
+17,Centro de Cómputo Byte,CENTRO DE COMPUTO,Centro,9
+18,Oficina Contable SUR,OFICINA,Centro,14
+19,Residencial Carmen,RESIDENCIAL,Pampa Galana,1
+20,Tienda de Barrio La Esquina,RESIDENCIAL,SAN ANDRÉS,3
