@@ -1,0 +1,16 @@
+id_producto,nombre,categoria,precio_costo_bs,precio_venta_bs,stock_actual
+1,GPS Trackmax X5,GPS,350,499,25
+2,GPS Trackmax Pro,GPS,520,799,12
+3,Cámara IP Hikvision DS-2CD,Camara,380,599,18
+4,Cámara Analógica Dahua,Camara,250,399,30
+5,Router MikroTik hAP,Red,280,449,15
+6,Switch TP-Link 8 puertos,Red,180,299,40
+7,Cable UTP Cat6,Accesorio,120,199,100
+8,NVR Hikvision 4 canales,NVR,650,999,8
+9,Cámara IP TP-Link Tapo,Camara,220,349,22
+10,GPS Invoxia,GPS,480,699,10
+11,Cámara IP Dahua PTZ,Camara,750,1199,5
+12,Router TPLink Archer,Red,300,499,20
+13,Switch Cisco 24 puertos,Red,1200,1899,3
+14,Kit GPS Vehicular,GPS,400,649,18
+15,Cámara IP Xiaomi,Camara,310,499,14

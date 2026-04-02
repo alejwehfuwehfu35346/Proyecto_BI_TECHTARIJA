@@ -1,0 +1,26 @@
+id_servicio,fecha,id_tecnico,id_cliente,tipo_servicio,horas,costo_combustible_bs,zona,es_reservicio
+1,2025-01-05 00:00:00,1,1,Instalacion GPS,4,50,San Jorge,0
+2,2025-01-08 10:00:00,2,2,Mantenimiento Camaras,3,30,Centro,0
+3,2025-01-11 20:00:00,3,3,Instalacion Red,5,80,Los Olivos,0
+4,2025-01-15 06:00:00,4,4,Calibracion GPS,2,20,San Andres,0
+5,2025-01-18 16:00:00,1,5,Instalacion Camaras,4,45,Centro,1
+6,2025-01-22 02:00:00,2,6,Mantenimiento Red,3,35,Los Olivos,0
+7,2025-01-25 12:00:00,3,7,Instalacion GPS,4,55,San Jorge,0
+8,2025-01-28 22:00:00,1,8,Reparacion Camara,5,90,Pampa Galana,0
+9,2025-02-01 08:00:00,4,9,Instalacion Red,3,40,Centro,1
+10,2025-02-04 18:00:00,2,10,Mantenimiento GPS,2,25,San Andres,0
+11,2025-02-08 04:00:00,1,1,Instalacion Camaras,4,60,San Jorge,0
+12,2025-02-11 14:00:00,3,2,Calibracion GPS,2,25,Centro,0
+13,2025-02-15 00:00:00,2,3,Instalacion Red,3,40,Los Olivos,0
+14,2025-02-18 10:00:00,4,11,Mantenimiento Camaras,4,70,San Andres,0
+15,2025-02-21 20:00:00,1,12,Instalacion GPS,5,100,Pampa Galana,1
+16,2025-02-25 06:00:00,2,4,Reparacion Red,3,45,Centro,0
+17,2025-02-28 16:00:00,3,5,Instalacion Camaras,4,65,San Jorge,0
+18,2025-03-04 02:00:00,1,13,Mantenimiento GPS,2,30,Los Olivos,0
+19,2025-03-07 12:00:00,4,14,Instalacion Red,3,50,San Andres,0
+20,2025-03-10 22:00:00,2,6,Calibracion GPS,2,25,Centro,0
+21,2025-03-14 08:00:00,1,7,Instalacion Camaras,4,55,Pampa Galana,0
+22,2025-03-17 18:00:00,3,15,Instalacion GPS,3,45,San Jorge,0
+23,2025-03-21 04:00:00,2,8,Mantenimiento Red,2,35,Centro,0
+24,2025-03-24 14:00:00,1,16,Instalacion Camaras,4,60,Los Olivos,1
+25,2025-03-28 00:00:00,4,9,Mantenimiento GPS,2,30,San Andres,0
